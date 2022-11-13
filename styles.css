@@ -36,7 +36,8 @@ body {
 
 .book-card {
   display: grid;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 80px 250px;
+  row-gap: 35px;
   background-color: var(--card-bg-color);
   color: var(--card-text-color);
   width: 280px;
@@ -59,4 +60,17 @@ body {
   justify-self: center;
   display: grid;
   row-gap: 20px;
+}
+
+.book-field {
+  text-align: center;
+}
+
+.sub-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.field-content {
+  font-size: 1.4rem;
 }
