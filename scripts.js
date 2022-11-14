@@ -1,11 +1,21 @@
 let myLibrary = [];
 
-const submitBtn = document.getElementById('submit');
 const addBook = document.getElementById('add-book');
+const exitForm = document.getElementById('close-form');
+const submitBtn = document.getElementById('submit');
 const bookLibrary = document.getElementById('library');
 
-submitBtn.addEventListener('click', addBookToLibrary);
 addBook.addEventListener('click', openForm);
+exitForm.addEventListener('click', closeForm);
+submitBtn.addEventListener('click', addBookToLibrary);
+
+function openForm() {
+  document.getElementById('new-book-form').style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById('new-book-form').style.display = "none";
+}
 
 function addBookToLibrary(title, author, pages, read) {
   const titleField = document.getElementById('title');
@@ -22,10 +32,6 @@ function addBookToLibrary(title, author, pages, read) {
   const newBook = new book(title, author, pages, read);
   myLibrary.push(newBook)
   refreshLibrary();
-}
-
-function openForm() {
-
 }
 
 function refreshLibrary() {

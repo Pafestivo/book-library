@@ -93,6 +93,7 @@ body {
 /* form */
 .new-book-form {
   background-color: white;
+  display: none;
   width: 350px;
   height: 400px;
 }
