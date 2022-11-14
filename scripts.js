@@ -1,23 +1,31 @@
 let myLibrary = [];
 
+const submitBtn = document.getElementById('submit');
 const addBook = document.getElementById('add-book');
 const bookLibrary = document.getElementById('library');
 
+submitBtn.addEventListener('click', addBookToLibrary);
 addBook.addEventListener('click', openForm);
+
+function addBookToLibrary(title, author, pages, read) {
+  const titleField = document.getElementById('title');
+  const authorField = document.getElementById('author');
+  const pagesField = document.getElementById('pages');
+  const isRead = document.getElementById('read');
+  title = titleField.value;
+  author = authorField.value;
+  pages = pagesField.value;
+  if(isRead.checked) { //checks to see if the switch is on or off
+    read = "Yes";
+  } else read = "No";
+
+  const newBook = new book(title, author, pages, read);
+  myLibrary.push(newBook)
+  refreshLibrary();
+}
 
 function openForm() {
 
-}
-
-function addBookToLibrary(title, author, pages, read) {
-  // title = prompt("What is the name of the book?");
-  // author = prompt("Author?");
-  // pages = prompt("Pages?");
-  // read = prompt("Have you read the book?");
-
-  // const newBook = new book(title, author, pages, read);
-  // myLibrary.push(newBook)
-  // refreshLibrary();
 }
 
 function refreshLibrary() {
