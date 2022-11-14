@@ -92,17 +92,24 @@ body {
 
 /* form */
 .new-book-form {
-  background-color: white;
+  background-color: #96AB9A; /* temporary color */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
   display: none;
-  width: 350px;
-  height: 400px;
+  width: 400px;
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 1px 5px 8px #acbbaf;
 }
 
 .form-container {
   display: grid;
   grid-template-rows: 90px repeat(4, 1fr);
   align-items: center;
-  height: 400px;
+  height: 100%;
+  border-radius: 20px;
 }
 
 .form-container h1 {
@@ -123,6 +130,14 @@ label {
 
 input {
   width: 100%;
+}
+
+#submit,
+form button {
+  width: 60%;
+  height: 40px;
+  border-radius: 7px;
+  margin: 10px auto 0 auto;
 }
 
 /* slider */
