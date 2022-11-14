@@ -1,27 +1,27 @@
-let myLibrary = [
-  {
-    title: "The Beaver",
-    author: "Beaver Man",
-    pages: "253",
-    read: "Yes"
-  },
-  {
-    title: "The Bachelor",
-    author: "Steven Rogers",
-    pages: "975",
-    read: "No"
-  },
-  {
-    title: "Mr. Vampire",
-    author: "Mesmorial Ballet",
-    pages: "17",
-    read: "Yes"
-  }
-];
+let myLibrary = [];
 
+const addBook = document.getElementById('add-book');
 const bookLibrary = document.getElementById('library');
 
+addBook.addEventListener('click', openForm);
+
+function openForm() {
+
+}
+
+function addBookToLibrary(title, author, pages, read) {
+  // title = prompt("What is the name of the book?");
+  // author = prompt("Author?");
+  // pages = prompt("Pages?");
+  // read = prompt("Have you read the book?");
+
+  // const newBook = new book(title, author, pages, read);
+  // myLibrary.push(newBook)
+  // refreshLibrary();
+}
+
 function refreshLibrary() {
+  bookLibrary.textContent = "";
   myLibrary.forEach((book) => {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
@@ -77,16 +77,6 @@ function book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  // title = prompt("What is the name of the book?");
-  // author = prompt("Author?");
-  // pages = prompt("Pages?");
-  // read = prompt("Have you read the book?");
 
-  const newBook = new book(title, author, pages, read);
-  myLibrary.push(newBook)
-  refreshLibrary();
-}
 
-addBookToLibrary();
 
