@@ -10,7 +10,7 @@ exitForm.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
 
 function openForm() {
-  document.getElementById('new-book-form').style.display = "block";
+  document.getElementById('new-book-form').style.display = "flex";
 }
 
 function closeForm() {
