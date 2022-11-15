@@ -148,10 +148,17 @@ form button {
   height: 40px;
   border-radius: 7px;
   margin: 10px auto 0 auto;
+  cursor: pointer;
+}
+
+#submit {
+  background-color: rgb(144, 253, 140);
+  
 }
 
 form button {
   margin-bottom: 20px;
+  background-color: rgb(248, 117, 117); 
 }
 
 /* slider */
