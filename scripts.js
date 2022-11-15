@@ -3,7 +3,6 @@ let myLibrary = [];
 const addBook = document.getElementById('add-book');
 const exitForm = document.getElementById('close-form');
 const submitBtn = document.getElementById('submit');
-const formFields = document.querySelectorAll('.form-field');
 const titleField = document.getElementById('title');
 const authorField = document.getElementById('author');
 const pagesField = document.getElementById('pages');
@@ -14,7 +13,7 @@ addBook.addEventListener('click', openForm);
 exitForm.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
-pagesField.addEventListener('keyup', enforceMinMax);
+pagesField.addEventListener('keydown', enforceMinMax);
 
 function openForm() {
   titleField.value = "";
@@ -95,10 +94,10 @@ function refreshLibrary() {
 })
 }
 
-function enforceMinMax() {
+function enforceMinMax(e) {
   if (pagesField.value != "") {
-    if (parseInt(pagesField.value) < parseInt(pagesField.min)) {
-      pagesField.value = pagesField.min;
+    if(e.key === "Backspace") { 
+      return; //makes sure that backspace doesn't delete twice
     }
     if (parseInt(pagesField.value) > parseInt(pagesField.max)) {
       pagesField.value = pagesField.max;
