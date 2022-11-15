@@ -3,13 +3,24 @@ let myLibrary = [];
 const addBook = document.getElementById('add-book');
 const exitForm = document.getElementById('close-form');
 const submitBtn = document.getElementById('submit');
+const formFields = document.querySelectorAll('.form-field');
+const titleField = document.getElementById('title');
+const authorField = document.getElementById('author');
+const pagesField = document.getElementById('pages');
+const isRead = document.getElementById('read');
 const bookLibrary = document.getElementById('library');
 
 addBook.addEventListener('click', openForm);
 exitForm.addEventListener('click', closeForm);
+submitBtn.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
+pagesField.addEventListener('keyup', enforceMinMax);
 
 function openForm() {
+  titleField.value = "";
+  authorField.value = "";
+  pagesField.value = "";
+  isRead.value = "";
   document.getElementById('new-book-form').style.display = "flex";
 }
 
@@ -45,6 +56,7 @@ function refreshLibrary() {
   
     const title = document.createElement('h1');
     title.classList.add('book-title');
+    title.setAttribute('id', 'book-title');
     title.textContent = book.title;
   
     const author = document.createElement('p');
@@ -80,8 +92,19 @@ function refreshLibrary() {
     bookDescription.append(authorDiv, pageCountDiv, isReadDiv);
     bookCard.append(title, bookDescription);
     bookLibrary.appendChild(bookCard);
-  })
+})
+}
+
+function enforceMinMax() {
+  if (pagesField.value != "") {
+    if (parseInt(pagesField.value) < parseInt(pagesField.min)) {
+      pagesField.value = pagesField.min;
+    }
+    if (parseInt(pagesField.value) > parseInt(pagesField.max)) {
+      pagesField.value = pagesField.max;
+    }
   }
+}
 
 //make a function that will be used to construct an object
 function book(title, author, pages, read) {
