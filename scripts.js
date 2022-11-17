@@ -128,8 +128,7 @@ function refreshLibrary() {
 }
 
 function deleteBook() {
-  const currentBook = this.closest('.book-container');
-  const currentID = currentBook.id;
+  const currentID = this.closest('.book-container').id;
   for (i = myLibrary.length - 1; i >= 0; i--) {
     if(myLibrary[i].bookID == currentID) {
       myLibrary.splice(i,1);
