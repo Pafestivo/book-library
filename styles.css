@@ -19,7 +19,7 @@ body {
   width: max-content;
   text-align: center;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
   border-bottom: 4px solid black;
 }
 
@@ -32,6 +32,12 @@ body {
   height: 500px;
   margin-top: 70px;
   background-color: var(--library-bg-color);
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .book-card {
@@ -79,6 +85,30 @@ body {
 .field-content {
   font-size: 1.4rem;
 }
+
+.book-container button {
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.delete-btn {
+  background-color: rgb(94, 8, 8);
+}
+
+.read-status {
+  background-color: rgb(144, 253, 140);
+}
+
+
 
 #add-book {
   display: block;

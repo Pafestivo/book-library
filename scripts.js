@@ -1,4 +1,5 @@
 let myLibrary = [];
+let theID = "1";
 
 const addBook = document.getElementById('add-book');
 const exitForm = document.getElementById('close-form');
@@ -28,7 +29,7 @@ function closeForm() {
   document.getElementById('new-book-form').style.display = "none";
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, read, bookID) {
   const titleField = document.getElementById('title');
   const authorField = document.getElementById('author');
   const pagesField = document.getElementById('pages');
@@ -37,6 +38,8 @@ function addBookToLibrary(title, author, pages, read) {
   title = titleField.value;
   author = authorField.value;
   pages = pagesField.value;
+  bookID = theID++;
+
   
   if(isRead.checked) { //checks to see if the switch is on or off
     read = "Yes";
@@ -47,7 +50,7 @@ function addBookToLibrary(title, author, pages, read) {
     author != "" &&
     pages != ""
     ) {
-      const newBook = new book(title, author, pages, read);
+      const newBook = new book(title, author, pages, read, bookID);
       myLibrary.push(newBook)
       refreshLibrary();
   } else {
@@ -60,12 +63,26 @@ function addBookToLibrary(title, author, pages, read) {
 function refreshLibrary() {
   bookLibrary.textContent = "";
   myLibrary.forEach((book) => {
+    const bookContainer = document.createElement('div');
     const bookCard = document.createElement('div');
-    bookCard.classList.add('book-card');
-  
+    const actionButtons = document.createElement('div');
     const bookDescription = document.createElement('div');
+    bookContainer.classList.add('book-container');
+    bookContainer.setAttribute('id', book.bookID); //adds an ID to each book
+    bookCard.classList.add('book-card');
+    actionButtons.classList.add('action-buttons');
     bookDescription.classList.add('book-description');
-  
+
+    const deleteBtn = document.createElement('button');
+    const readStatus = document.createElement('button');    
+    deleteBtn.setAttribute('id', 'delete-btn');
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener('click', deleteBook);
+    readStatus.setAttribute('id', 'read-status');
+    readStatus.classList.add('read-status');
+    readStatus.textContent = "Status";
+
     const title = document.createElement('h1');
     title.classList.add('book-title');
     title.setAttribute('id', 'book-title');
@@ -101,10 +118,24 @@ function refreshLibrary() {
     isReadDiv.classList.add('book-field');
     isReadDiv.append(read, isRead);
   
-    bookDescription.append(authorDiv, pageCountDiv, isReadDiv);
+    bookLibrary.appendChild(bookContainer);
+    bookContainer.appendChild(bookCard);
+    bookContainer.append(actionButtons);
+    actionButtons.append(deleteBtn, readStatus);
     bookCard.append(title, bookDescription);
-    bookLibrary.appendChild(bookCard);
+    bookDescription.append(authorDiv, pageCountDiv, isReadDiv);
 })
+}
+
+function deleteBook() {
+  const currentBook = this.closest('.book-container');
+  const currentID = currentBook.id;
+  for (i = myLibrary.length - 1; i >= 0; i--) {
+    if(myLibrary[i].bookID == currentID) {
+      myLibrary.splice(i,1);
+    }
+  }
+  refreshLibrary();
 }
 
 function enforceMinMax(e) {
@@ -119,11 +150,12 @@ function enforceMinMax(e) {
 }
 
 //make a function that will be used to construct an object
-function book(title, author, pages, read) {
+function book(title, author, pages, read, bookID) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.bookID = bookID;
 }
 
 
