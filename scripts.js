@@ -20,6 +20,7 @@ function openForm() {
   authorField.value = "";
   pagesField.value = "";
   isRead.value = "";
+  document.getElementById('error').style.display = "none";
   document.getElementById('new-book-form').style.display = "flex";
 }
 
@@ -32,16 +33,28 @@ function addBookToLibrary(title, author, pages, read) {
   const authorField = document.getElementById('author');
   const pagesField = document.getElementById('pages');
   const isRead = document.getElementById('read');
+
   title = titleField.value;
   author = authorField.value;
   pages = pagesField.value;
+  
   if(isRead.checked) { //checks to see if the switch is on or off
     read = "Yes";
   } else read = "No";
 
-  const newBook = new book(title, author, pages, read);
-  myLibrary.push(newBook)
-  refreshLibrary();
+  if (
+    title != "" &&
+    author != "" &&
+    pages != ""
+    ) {
+      const newBook = new book(title, author, pages, read);
+      myLibrary.push(newBook)
+      refreshLibrary();
+  } else {
+    document.getElementById('error').style.display = "block";
+    document.getElementById('new-book-form').style.display = "flex";
+  }
+
 }
 
 function refreshLibrary() {
