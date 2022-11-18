@@ -81,7 +81,7 @@ function refreshLibrary() {
     deleteBtn.addEventListener('click', deleteBook);
     readStatus.setAttribute('id', 'read-status');
     readStatus.classList.add('read-status');
-    readStatus.textContent = "Status";
+    readStatus.textContent = "Change Status";
     readStatus.addEventListener('click', changeStatus);
 
     const title = document.createElement('h1');

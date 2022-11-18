@@ -121,11 +121,15 @@ body {
 }
 
 .delete-btn {
-  background-color: rgb(94, 8, 8);
+  background-color: #582f2f;
+  color: white;
+  font-size: 1.3rem;
 }
 
 .read-status {
-  background-color: rgb(144, 253, 140);
+  background-color: #2f5851;
+  color: white;
+  font-size: 1.15rem;
 }
 
 
