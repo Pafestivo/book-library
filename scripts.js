@@ -22,7 +22,8 @@ function openForm() {
   authorField.value = "";
   pagesField.value = "";
   isRead.value = "";
-  document.getElementById('error').style.display = "none";
+  document.getElementById('fill-form').style.display = "none";
+  document.getElementById('numbers-only').style.display = "none";
   document.getElementById('new-book-form').style.display = "flex";
 }
 
@@ -54,8 +55,12 @@ function addBookToLibrary(title, author, pages, read, bookID) {
       myLibrary.push(newBook)
       refreshLibrary();
   } else {
-    document.getElementById('error').style.display = "block";
     document.getElementById('new-book-form').style.display = "flex";
+    document.getElementById('fill-form').style.display = "block";
+  }
+
+  if (isNaN(pages.value)) {
+    document.getElementById('numbers-only').style.display = "flex";
   }
 
 }
@@ -81,7 +86,7 @@ function refreshLibrary() {
     deleteBtn.addEventListener('click', deleteBook);
     readStatus.setAttribute('id', 'read-status');
     readStatus.classList.add('read-status');
-    readStatus.textContent = "Change Status";
+    readStatus.textContent = "Read Status";
     readStatus.addEventListener('click', changeStatus);
 
     const title = document.createElement('h1');
