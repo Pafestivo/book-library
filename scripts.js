@@ -33,7 +33,6 @@ function addBookToLibrary(title, author, pages, read, bookID) {
   const titleField = document.getElementById('title');
   const authorField = document.getElementById('author');
   const pagesField = document.getElementById('pages');
-  const isRead = document.getElementById('read');
 
   title = titleField.value;
   author = authorField.value;
@@ -82,6 +81,7 @@ function refreshLibrary() {
     readStatus.setAttribute('id', 'read-status');
     readStatus.classList.add('read-status');
     readStatus.textContent = "Status";
+    readStatus.addEventListener('click', changeStatus);
 
     const title = document.createElement('h1');
     title.classList.add('book-title');
@@ -113,7 +113,7 @@ function refreshLibrary() {
     const isReadDiv = document.createElement('div');
     read.classList.add('sub-title');
     read.textContent = `Read: `;
-    isRead.classList.add('field-content');
+    isRead.classList.add('field-content', 'read-status-content');
     isRead.textContent = book.read
     isReadDiv.classList.add('book-field');
     isReadDiv.append(read, isRead);
@@ -135,6 +135,16 @@ function deleteBook() {
     }
   }
   refreshLibrary();
+}
+
+function changeStatus() {
+  const currentID = this.closest('.book-container').id;
+  const theStatus = document.getElementById(currentID).querySelector('.read-status-content');
+  if(theStatus.textContent === "No") {
+    theStatus.textContent = "Yes";
+  } else {
+    theStatus.textContent = "No";
+  }
 }
 
 function enforceMinMax(e) {
