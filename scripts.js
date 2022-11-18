@@ -16,7 +16,8 @@ exitForm.addEventListener('click', (e) => e.preventDefault());
 submitBtn.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
 submitBtn.addEventListener('click', (e) => e.preventDefault());
-pagesField.addEventListener('keydown', enforceMinMax);
+pagesField.addEventListener('input', enforceMinMax);
+pagesField.addEventListener('input', blockNan);
 
 function openForm() {
   titleField.value = "";
@@ -148,15 +149,16 @@ function changeStatus() {
   }
 }
 
-function enforceMinMax(e) {
+function enforceMinMax() {
   if (pagesField.value != "") {
-    if(e.key === "Backspace") { 
-      return; //makes sure that backspace doesn't delete twice
-    }
     if (parseInt(pagesField.value) > parseInt(pagesField.max)) {
       pagesField.value = pagesField.max;
     }
   }
+}
+
+function blockNan() {
+  pagesField.value = pagesField.value.replace(/[^0-9]/g, '');
 }
 
 //make a function that will be used to construct an object
