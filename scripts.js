@@ -12,6 +12,7 @@ const bookLibrary = document.getElementById('library');
 
 addBook.addEventListener('click', openForm);
 exitForm.addEventListener('click', closeForm);
+exitForm.addEventListener('click', (e) => e.preventDefault());
 submitBtn.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
 submitBtn.addEventListener('click', (e) => e.preventDefault());
