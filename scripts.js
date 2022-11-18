@@ -14,6 +14,7 @@ addBook.addEventListener('click', openForm);
 exitForm.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', closeForm);
 submitBtn.addEventListener('click', addBookToLibrary);
+submitBtn.addEventListener('click', (e) => e.preventDefault());
 pagesField.addEventListener('keydown', enforceMinMax);
 
 function openForm() {
