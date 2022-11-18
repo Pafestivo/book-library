@@ -24,7 +24,6 @@ function openForm() {
   pagesField.value = "";
   isRead.value = "";
   document.getElementById('fill-form').style.display = "none";
-  document.getElementById('numbers-only').style.display = "none";
   document.getElementById('new-book-form').style.display = "flex";
 }
 
@@ -59,11 +58,6 @@ function addBookToLibrary(title, author, pages, read, bookID) {
     document.getElementById('new-book-form').style.display = "flex";
     document.getElementById('fill-form').style.display = "block";
   }
-
-  if (isNaN(pages.value)) {
-    document.getElementById('numbers-only').style.display = "flex";
-  }
-
 }
 
 function refreshLibrary() {
