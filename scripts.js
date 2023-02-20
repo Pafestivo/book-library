@@ -52,7 +52,7 @@ function addBookToLibrary(title, author, pages, read, bookID) {
     author != "" &&
     pages != ""
     ) {
-      const newBook = new book(title, author, pages, read, bookID);
+      const newBook = new Book(title, author, pages, read, bookID);
       myLibrary.push(newBook)
       refreshLibrary();
   } else {
@@ -161,8 +161,8 @@ function blockNan() {
   pagesField.value = pagesField.value.replace(/[^0-9]/g, '');
 }
 
-//make a function that will be used to construct an object
-function book(title, author, pages, read, bookID) {
+// make a function that will be used to construct an object
+function Book(title, author, pages, read, bookID) {
   this.title = title;
   this.author = author;
   this.pages = pages;
