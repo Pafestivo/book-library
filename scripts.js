@@ -1,6 +1,15 @@
 let myLibrary = [];
 let theID = "1";
 
+// make a function that will be used to construct an object
+function Book(title, author, pages, read, bookID) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+  this.bookID = bookID;
+}
+
 const addBook = document.getElementById('add-book');
 const exitForm = document.getElementById('close-form');
 const submitBtn = document.getElementById('submit');
@@ -161,14 +170,7 @@ function blockNan() {
   pagesField.value = pagesField.value.replace(/[^0-9]/g, '');
 }
 
-// make a function that will be used to construct an object
-function Book(title, author, pages, read, bookID) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.bookID = bookID;
-}
+
 
 
 
